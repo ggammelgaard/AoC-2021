@@ -3,8 +3,8 @@ import string
 
 if __name__ == "__main__":
     # read input
-    f = open(r"example.txt")
-    # f = open(r"input.txt")
+    # f = open(r"example.txt")
+    f = open(r"input.txt")
     lines = f.readlines()
     clean_lines = [s.rstrip('\n') for s in lines]
     # print(clean_lines)
@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     output_sum = 0
     for i in range(len(outputs)):
-        pattern = np.array(patterns[1])  # todo: make this work with this one also
+        pattern = np.array(patterns[i])
         pattern_len = np.array([len(x) for x in pattern])
 
         digmap = dict()
@@ -79,11 +79,11 @@ if __name__ == "__main__":
                 digmap[9] = digit
 
         # decode
-        output = np.array(outputs[0])
+        output = np.array(outputs[i])
         key_list = list(digmap.keys())
         val_list = list(digmap.values())
         output_int = int("".join([str(key_list[val_list.index(entry)]) for entry in output]))
-        print("i: {}, output_int: {}".format(i, output_int))
+        # print("i: {}, output_int: {}".format(i, output_int))
         output_sum += output_int
 
     print(output_sum)
